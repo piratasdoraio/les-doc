@@ -1,0 +1,239 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "LES - PdR Med",
+      "description": "Construção base dos endpoints da API",
+    },
+    "servers": [
+      {
+        "url": "http://les-med.piratasdoraio.com/api"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Paciente",
+  #       "description": "desc"
+      },
+      {
+        "name": "Consulta",
+  #       "description": "desc"
+      },
+      {
+        "name": "Medico",
+  #       "description": "desc"
+      },
+      {
+        "name": "Exame",
+  #       "description": "desc"
+      },
+      {
+        "name": "Laudo",
+  #       "description": "desc"
+      },
+      {
+        "name": "Funcionario",
+  #       "description": "desc"
+      },
+      {
+        "name": "Admin",
+  #       "description": "desc"
+      },
+      {
+        "name": "Sistema",
+  #       "description": "desc"
+      },
+    ],
+    "paths": {
+      #Paciente
+      "/paciente": {
+        "post": {
+          "summary": "Cadastra um novo paciente",
+  #         "description": "desc2",
+          "operationId": "cadastrarPaciente",
+          "tags": ["Paciente"],
+        }
+      },
+      "/paciente/login": {
+        "post": {
+          "summary": "Loga o paciente",
+  #         "description": "desc2",
+          "operationId": "pacienteLogin",
+          "tags": ["Paciente"],
+        }
+      },
+      "/paciente/{id}": {
+        "get": {
+          "summary": "Obtem informações sobre um paciente",
+          "description": "Requer autenticação",
+          "operationId": "obterPaciente",
+          "tags": ["Paciente"],
+        },
+        "patch": {
+          "summary": "Atualiza dados cadastrais de um paciente",
+          "description": "Requer autenticação",
+          "operationId": "atualizarPaciente",
+          "tags": ["Paciente"],
+        },
+      },
+      "/paciente/{id}/consultas": {
+        "get": {
+          "summary": "Obtem consultas desse paciente",
+          "description": "Requer autenticação",
+          "operationId": "obterConsultasPaciente",
+          "tags": ["Paciente"]
+        }
+      },
+      
+      #Consulta
+      "/consulta": {
+        "post": {
+          "summary": "Marca uma consulta",
+          "description": "Requer autenticação",
+          "operationId": "criaConsulta",
+          "tags": ["Consulta"],
+        }
+      },
+      "/consulta/{id}": {
+        "get": {
+          "summary": "Obtem informações sobre uma consulta",
+          "description": "Requer autenticação",
+          "operationId": "cadastrarConsulta",
+          "tags": ["Consulta"],
+        }
+      },
+      "/consulta/{id}/exames": {
+        "get": {
+          "summary": "Obtem exames desta consulta",
+          "description": "Requer autenticação",
+          "operationId": "obterExamesConsulta",
+          "tags": ["Consulta"], 
+        }
+      },
+      
+      #Medico
+      "/medico": {
+         "post": {
+          "summary": "Cadastra um medico",
+          "description": "Requer autenticação",
+          "operationId": "cadastrarMedico",
+          "tags": ["Medico"],
+         }
+      },
+      "/medico/login": {
+         "post": {
+          "summary": "Loga o medico",
+  #         "description": "Requer autenticação",
+          "operationId": "pacienteLogin",
+          "tags": ["Medico"],
+         }
+      },
+      "/medico/disponivel": {
+         "get": {
+          "summary": "Verifica os medicos disponiveis",
+          "description": "Requer autenticação",
+          "operationId": "medicoDisponivel",
+          "tags": ["Medico"],
+         }
+      },
+      "/medico/disponivel/{id}": {
+         "patch": {
+          "summary": "Altera a disponibilidade de um medico",
+          "description": "Requer autenticação",
+          "operationId": "setMedicoDisponivel",
+          "tags": ["Medico"],
+         }
+      },
+      
+      #Exame
+      "/exame": {
+        "post":{
+          "summary": "Solicita um exame",
+          "description": "Requer autenticação",
+          "operationId": "criaExame",
+          "tags": ["Exame"]
+        }
+      },
+      "/exame/{id}": {
+        "post":{
+          "summary": "Marca a data do exame",
+          "description": "Requer autenticação",
+          "operationId": "marcaExame",
+          "tags": ["Exame"]
+        } 
+      },
+      "/exame/{id}/realizar": {
+        "post":{
+          "summary": "Insere um laudo no exame",
+          "description": "Requer autenticação",
+          "operationId": "realizaExame",
+          "tags": ["Exame"]
+        }
+      },
+      "/exame/{id}/validar": {
+        "patch":{
+          "summary": "Avalia o laudo e marca como concluido",
+          "description": "Requer autenticação",
+          "operationId": "validaExame",
+          "tags": ["Exame"]
+        }
+      },
+      
+      #Laudo
+      "/laudo": {
+        "post":{
+          "summary": "Cria um laudo para um exame",
+          "description": "Requer autenticação",
+          "operationId": "marcaExame",
+          "tags": ["Laudo"]
+        }
+      },
+      "/laudo/{id}/validar": {
+        "patch":{
+          "summary": "Avalia o laudo e marca como concluido",
+          "description": "Requer autenticação",
+          "operationId": "validaLaudo",
+          "tags": ["Laudo"],
+          "deprecated": "true"
+        }
+      },
+      
+      #Funcionario
+      "/funcionario": {
+         "post": {
+          "summary": "Cadastra um funcionario",
+          "description": "Requer autenticação",
+          "operationId": "cadastrarFuncionario",
+          "tags": ["Funcionario"],
+         }
+      },
+      "/funcionario/login": {
+         "post": {
+          "summary": "Loga o funcionario",
+  #         "description": "Requer autenticação",
+          "operationId": "funcionarioLogin",
+          "tags": ["Funcionario"],
+         }
+      },
+      
+      #Admin
+      "/admin": {
+         "post": {
+          "summary": "Cadastra um admin",
+          "description": "Requer autenticação",
+          "operationId": "cadastrarAdmin",
+          "tags": ["Admin"],
+         }
+      },
+      "/admin/login": {
+         "post": {
+          "summary": "Loga o admin",
+  #         "description": "Requer autenticação",
+          "operationId": "adminLogin",
+          "tags": ["Admin"],
+         }
+      },
+      
+      #Sistema
+    }
+  }
